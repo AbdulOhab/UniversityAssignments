@@ -1,0 +1,11 @@
+  .MODEL TINY
+
+.CODE
+	MOV AX,0012H
+	MOV CX,1000H
+
+	MUL CX           ;AX*CX = DX:AX
+			 ; AX FOR 16BIT
+			 ; DX:AX  FOR 32 BIT
+
+END

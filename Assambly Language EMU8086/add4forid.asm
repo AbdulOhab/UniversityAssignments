@@ -1,0 +1,118 @@
+.MODEL TINY
+
+
+.DATA
+
+X DB '0'  
+Y DB '0'
+Z DB '0'
+
+
+.CODE
+MAIN PROC 
+
+MOV CL, 35 
+MOV AH, 2
+
+PTXYZ: 
+
+
+  
+MOV DL, X
+INT 21H
+
+MOV DL, Y
+INT 21H
+
+MOV DL, Z
+INT 21H 
+
+MOV DL, ','
+INT 21H
+         
+MOV DL, ' '
+INT 21H
+
+DEC CL ;
+CMP CL ,-1
+JE FINISH  
+;        xyz 
+        ;000
+;000+004=004
+;004+004=008
+;008+004=012
+;012+004=016
+;016+004=020
+
+
+;020+004=024 
+;024+004=008
+
+
+CMP Y ,'9'
+JE YB
+YY:
+CMP Z ,'0' 
+JE FORA  
+
+CMP Z ,'2' 
+JE FORE 
+
+CMP Z ,'4' 
+JE FORD  
+
+CMP Z ,'6'
+JE FORB
+
+CMP Z ,'8'
+JE FORC   
+
+   
+ 
+FORA:  
+MOV Z ,'4'
+
+JMP PTXYZ 
+
+FORE:  
+MOV Z ,'6'
+
+JMP PTXYZ 
+
+FORD:  
+MOV Z ,'8'
+
+JMP PTXYZ   
+
+FORB:  
+MOV Z ,'0'
+INC Y
+JMP PTXYZ
+
+JMP PTXYZ
+
+FORC:
+MOV Z ,'2'
+INC Y
+JMP PTXYZ
+
+
+
+
+YB: 
+CMP Z,'6'
+JE YYY
+JMP YY
+
+
+YYY:
+MOV X ,'1' 
+MOV Y ,'0'
+MOV z ,'0'
+JMP PTXYZ
+        
+        
+
+FINISH:
+END
+    

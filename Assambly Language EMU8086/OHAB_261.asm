@@ -1,0 +1,78 @@
+.MODEL TINY
+
+
+.DATA
+
+X DB '1'  
+Y DB '6'
+Z DB '2'
+
+
+.CODE
+MAIN PROC 
+
+;MOV CX, 261
+ ;MOV CH,02H
+ ;MOV CL,3DH    
+ ;MOV CX,0105H 
+  
+MOV CX,264D
+MOV AH, 2
+
+ST:
+
+DEC CX  
+
+CMP CX,0001H
+JE FINISH
+
+MOV DL,Z
+INT 21H
+
+MOV DL,Y
+INT 21H
+
+MOV DL,X
+INT 21H 
+
+MOV DL, ','
+INT 21H
+ 
+DEC X
+
+CMP X, '0'
+JNE ST 
+JNE FORX
+
+FORX:  
+DEC CX 
+
+MOV DL,Z
+INT 21H
+
+MOV DL,Y
+INT 21H
+
+MOV DL,X
+INT 21H 
+
+MOV DL, ','
+INT 21H   
+
+MOV X,'9' 
+DEC Y 
+
+CMP Y,47D
+JE FORY
+JMP ST:
+
+FORY:
+DEC Z 
+MOV Y,57D 
+JMP ST:   
+
+
+
+FINISH:
+END
+    
