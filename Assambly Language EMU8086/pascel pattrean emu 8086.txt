@@ -1,0 +1,123 @@
+    1
+  3 2 3
+5 4 3 4 3
+  3 2 3
+    1
+
+for sami
+====================================
+.MODEL TINY
+.DATA
+
+N DW 1
+ .CODE
+ MAIN PROC
+    
+    MOV AH,2
+    MOV DL,32D
+    INT 21H
+    
+    MOV DL,32D
+    INT 21H
+    
+    MOV DL,32D
+    INT 21H
+    
+    MOV DL,49
+    MOV AH,2
+    MOV BX,N
+    
+    L1:MOV CX,N
+    INT 21H
+    LOOP L1
+    
+    MOV DL,32D
+    INT 21H
+  
+    MOV DL,10
+    INT 21H
+    MOV DL,13
+    INT 21H
+             
+     MOV DL,32D
+    INT 21H
+    
+     MOV DL,32D
+    INT 21H
+    
+    MOV DL,51
+    MOV AH,2
+    MOV BX,N
+    
+    L2:MOV CX,N
+    INT 21H
+    LOOP L2
+    
+    MOV DL,50
+    MOV AH,2
+    MOV BX,N
+    
+    L3:MOV CX,N
+    INT 21H
+    LOOP L3
+    
+    MOV DL,51
+    MOV AH,2
+    MOV BX,N    
+    
+  
+    
+   
+    
+    L4:MOV CX,N
+    INT 21H
+    LOOP L4
+    
+    MOV DL,32D
+    INT 21H
+    
+    MOV DL,10
+    INT 21H
+    MOV DL,13
+    INT 21H
+    
+    MOV DL,32D
+    INT 21H
+    
+    MOV DL,32D
+    INT 21H 
+    
+    MOV DL,32D
+    INT 21H
+    
+    MOV DL,49
+    MOV AH,2
+    MOV BX,N
+    
+    L5:MOV CX,N
+    INT 21H
+    LOOP L5
+    
+    MOV DL,32D
+    INT 21H 
+    
+    MOV DL,32D
+    INT 21H
+    
+    MOV DL,32D
+    INT 21H
+    
+    END
+
+
+=========================
+
+.MODEL TINY
+
+.DATA
+.CODE
+
+MAIN PROC
+    
+    
+END

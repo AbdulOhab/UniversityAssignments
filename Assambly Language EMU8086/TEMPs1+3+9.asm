@@ -1,0 +1,73 @@
+
+.MODEL TINY
+
+.DATA
+X  DB '0' 
+Y  DB '0'
+Z  DB '0'
+S  DW '1'
+T  DB '3'
+CT DB '1' 
+ZP DW '0' 
+
+.CODE
+
+MAIN PROC
+
+	MOV AH,1H
+	INT 21H
+
+	
+	MOV X,AL
+	SUB X,48D
+	MOV Y,AL
+    MOV S,0001H
+	MOV Z,AL
+	
+	MOV ZP,0002H
+	MOV AX,ZP
+	MUL X
+	MOV ZP,AX
+	
+	CMP X,1
+	JE FOR1:
+	
+	MOV CH, 00H 
+	DEC X
+	MOV CL,X 
+;	MOV DX,ZP
+    LP2:
+	MOV CT,CL  
+	
+	MOV AX, 0001H
+	MOV BX, 0003H
+	LP1:
+	
+	MUL BX 
+	
+	DEC CT
+	CMP CT,0
+	JNE LP1 
+	
+    ADD AX,S
+    MOV S,AX
+    LOOP LP2
+    
+    MOV BX,S
+    
+    
+   
+
+	JMP ED:
+	
+	FOR1:
+	MOV BX,0001H 
+	
+	ED:
+	
+	MOV AX,BX
+	DIV ZP
+	
+	MOV BX,AX
+
+END

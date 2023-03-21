@@ -1,0 +1,76 @@
+Write a code to print from 2xx to 000. Here xx = Last two digits of your ID. So if your id is 2019000000123 then you need to print 223, 222, 221, 220, 219, 218, .... 000. (Each number needs to be separated by a comma and a space) *
+
+.MODEL TINY
+     ; Name: Abdul Ohab
+     ; Id  : 2019000000061
+
+.DATA
+
+X DB '1'  
+Y DB '6'
+Z DB '2'
+
+
+.CODE
+MAIN PROC 
+
+
+
+MOV CX,264D
+MOV AH, 2
+
+ST:
+
+DEC CX  
+
+CMP CX,0001H
+JE FI
+
+MOV DL,Z
+INT 21H
+
+MOV DL,Y
+INT 21H
+
+MOV DL,X
+INT 21H 
+
+MOV DL, ','
+INT 21H
+ 
+DEC X
+
+CMP X, '0'
+JNE ST 
+JNE FORX
+
+FORX:  
+DEC CX 
+
+MOV DL,Z
+INT 21H
+
+MOV DL,Y
+INT 21H
+
+MOV DL,X
+INT 21H 
+
+MOV DL, ','
+INT 21H   
+
+MOV X,'9' 
+DEC Y 
+
+CMP Y,47D
+JE FORY
+JMP ST:
+
+FORY:
+DEC Z 
+MOV Y,57D 
+JMP ST:   
+
+
+FI:
+END

@@ -1,0 +1,12 @@
+.MODEL TINY   
+
+
+.CODE
+MAIN PROC   
+MOV DL,10000100b
+SUB DL,10101001b
+INT 21H  
+        
+
+    
+END
