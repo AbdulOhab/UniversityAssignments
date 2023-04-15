@@ -1,0 +1,84 @@
+
+Net address for Student 192.168.1.0/24
+Assignable Addresses: 192.168.1.1 - 192.168.1.254
+
+IP: 192.168.1.1
+
+
+
+
+
+
+//first router R0
+IP: 192.16.0.1
+configure DHCP address
+Router(config)#ip dhcp pool SEU1
+Router(dhcp-config)# network 192.16.0.1 255.255.255.0
+Router(dhcp-config)# default-router 192.16.0.1   //gW
+
+
+Router(config-if)#int fa 0/0
+Router(config-if)#ip add 192.16.0.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+
+#interface Serial2/0
+ip address 172.17.0.1 255.255.0.0
+
+R-1(config)#router  rip 
+R-1(config-router)#network 192.16.0.0
+R-1(config-router)#network 172.17.0.0
+
+
+//R2
+
+Router(config)#ip dhcp pool SEU1
+Router(dhcp-config)# network 192.18.0.1 255.255.255.0
+Router(dhcp-config)# default-router 192.18.0.1   //gW
+
+
+Router(config-if)#int fa 0/0
+Router(config-if)#ip add 192.18.0.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+
+#interface Serial2/0
+ip address 172.17.0.1 255.255.0.0
+
+#interface Serial2/0
+ip address 172.17.0.2 255.255.0.0
+
+
+
+router rip
+network 172.17.0.0
+network 172.18.0.0
+network 192.19.0.0
+
+//R3
+Router(config)#ip dhcp pool SEU1
+Router(dhcp-config)# network 192.20.0.1 255.255.255.0
+Router(dhcp-config)# default-router 192.20.0.1   //gW
+
+
+Router(config-if)#int fa 0/0
+Router(config-if)#ip add 192.20.0.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+
+
+
+#interface Serial2/0
+ip address 172.19.0.2 255.255.0.0
+
+
+R3(config)#router rip
+R3(config-router)#network 172.19.0.0
+R3(config-router)#network 192.20.0.0
+
+
+
+
+
+
+

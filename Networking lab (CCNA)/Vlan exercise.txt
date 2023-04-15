@@ -1,0 +1,146 @@
+Vlan For It departmanet
+==========================
+
+
+Switch>en
+Switch#
+Switch#sh vlan brief 
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+
+
+Switch#config t
+
+
+Switch(config)#vlan 2
+Switch(config-vlan)#name IT
+
+Switch(config-vlan)#vlan 3
+Switch(config-vlan)#name HR
+
+
+Switch#sh vlan brief 
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+2    it                               active    
+3    HR                               active    
+
+
+Switch(config)#int range fa0/1-2	
+Switch(config-if-range)#switchport access vlan 2
+
+Switch(config)#int range fa0/3-4
+Switch(config-if-range)#switchport access vlan 3
+
+
+Switch#show vlan brief 
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+                                                Fa0/13, Fa0/14, Fa0/15, Fa0/16
+                                                Fa0/17, Fa0/18, Fa0/19, Fa0/20
+                                                Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+2    it                               active    Fa0/1, Fa0/2
+3    HR                               active    Fa0/3, Fa0/4
+
+
+**Administrative Mode: dynamic mode to turn into static access
+
+Switch#config t
+Switch(config)#int range fa 0/1-4
+Switch(config-if-range)#switchport mode access 
+
+Switch#show interfaces switchport 
+Name: Fa0/1
+Switchport: Enabled
+Administrative Mode: static access**
+Operational Mode: static access
+
+
+**this stablish a Trunk ...
+
+
+
+** inter switch connection with trank mode
+Switch(config)#int fa 0/5
+
+Switch(config-if)#switchport mode trunk 
+
+
+Switch#sh interfaces trunk 
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/5       **on           **802.1q         trunking      1
+
+
+**this another switch trunk mode on automaticly . . .
+
+
+
+
+
+
+*** switch 2
+==============
+	
+Switch>en
+
+Switch(config)#vlan 2
+Switch(config-vlan)#name IT
+Switch(config-vlan)#vlan 3
+Switch(config-vlan)#name HR
+
+
+Switch(config-vlan)#int range fa0/1-2
+Switch(config-if-range)#switchport access vlan 2
+Switch(config-if-range)#int range fa0/3-4
+Switch(config-if-range)#switchport access vlan 3
+Switch(config-if-range)#^Z
+
+
+Switch#sh vlan brief 
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/6, Fa0/7, Fa0/8, Fa0/9
+                                                Fa0/10, Fa0/11, Fa0/12, Fa0/13
+                                                Fa0/14, Fa0/15, Fa0/16, Fa0/17
+                                                Fa0/18, Fa0/19, Fa0/20, Fa0/21
+                                                Fa0/22, Fa0/23, Fa0/24, Gig0/1
+                                                Gig0/2
+2    IT                               active    Fa0/1, Fa0/2
+3    HR                               active    Fa0/3, Fa0/4
+
+
+
+
+Switch(config)#int range fa 0/1-4
+Switch(config-if-range)#switchport mode access 
+
+Switch#show interfaces  switchport 
+Name: Fa0/1
+Switchport: Enabled
+Administrative Mode: static access**
+Operational Mode: static access

@@ -1,0 +1,26 @@
+server router
+
+
+Router(config)#ip route 192.168.44.0 255.255.255.0 177.77.77.10
+
+
+
+R0:
+
+R1(config)#ip route 0.0.0.0 0.0.0.0 177.77.77.11
+
+
+R1(config)#access-list 1 permit 192.168.44.0 0.0.0.255
+
+
+R1(config)#ip nat pool NAT-POOL 177.77.77.1 177.77.77.7 netmask 255.255.255.0
+
+
+R1(config)#ip nat inside source list 1 pool NAT-POOL overload
+
+R1(config)#int gig0/0
+R1(config-if)#ip nat inside
+
+
+R1(config-if)#int se0/3/0
+R1(config-if)#ip nat outside

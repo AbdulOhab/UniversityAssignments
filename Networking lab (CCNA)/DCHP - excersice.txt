@@ -1,0 +1,42 @@
+//configuring for this ip
+Net address for Student 192.168.1.0/24
+Assignable Addresses: 192.168.1.1 - 192.168.1.254
+
+SM:255.255.255.0
+G/W: 192.168.1.1/24
+DNS: 192.168.1.10/24
+HTTP:192.168.1.9/24
+
+
+==============================
+ip dhcp pool SEU_DHCP or hos SEU_DHCP
+
+Router>en
+Router# config t /golbal confiagration mode
+
+//=============================kisu ipkey exclude korey raka jai.for special purpous
+Router(config)#ip dhcp excluded-address 192.168.50.2 192.168.50.30
+Router(config)#ip dhcp excluded-address 192.168.50.254 //for dns server
+
+
+
+//=============== configure DHCP address
+Router(config)#ip dhcp pool SEU_DHCP
+Router(dhcp-config)# network 192.168.50.0 255.255.255.0
+Router(dhcp-config)# default-router 192.168.50.1   //first ip for defult router
+Router(dhcp-config)# dns-server 192.168.50.154    //End Address for dns server
+
+
+//================config switch
+Router(config-if)#int fa0/0  ir interface GigabitEthernet0/0
+Router(config-if)#ip add 192.168.50.1 255.255.255.0
+Router(config-if)#no shut
+Router(config-if)#exit
+
+
+Router#sh running-config
+
+Router#wr  //to save all the command use write memory
+
+
+

@@ -1,0 +1,60 @@
+
+
+vlan 10
+name STUDENT
+vlan 30
+name TEACHER
+
+int range fa0/1-9
+switchport access vlan 10
+switchport mode access
+
+int range fa0/10-20
+switchport access vlan 30
+switchport mode access
+
+
+**teacher
+
+interface gig0/0.30
+encapsulation dot1Q 30
+ip add 61.19.20.33 255.255.255.224
+
+
+
+ip dhcp pool TC1
+network 61.19.20.32 255.255.255.224
+default-router 61.19.20.33
+dns-server 8.8.8.8
+
+
+ospf
+
+**do sh ip protocols
+
+R0 - area 0
+
+router ospf 10
+network 61.19.20.0 0.0.0.31 area 0
+network 61.19.20.32 0.0.0.31 area 0
+
+
+
+network 61.20.19.0 0.0.0.3 area 0
+network 61.20.19.9 0.0.0.3 area 0
+
+
+
+R1 - area 1
+
+network 61.20.19.9 0.0.0.3 area 0
+network 61.20.19.4 0.0.0.3 area 1
+
+
+Nat - area 2
+network 61.20.19.4 0.0.0.3 area 1
+
+
+
+
+
