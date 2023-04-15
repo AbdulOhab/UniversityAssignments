@@ -1,0 +1,51 @@
+
+void setfillstyle(int pattern, int color)
+void floodfill(int x, int y, int border_color)
+
+
+Input : pattern = HATCH_FILL, Color = RED
+        circle : x = 250, y = 250, radius = 100
+        floodfill : x = 250, y = 250, border color =15
+
+Input : pattern = LTSLASH_FILL, Color = RED
+       rectangle : left = 200, top = 200, right = 450, bottom = 450
+       floodfill : x = 201, y = 201, border_color = 15
+
+
+Below is the table showing INT VALUES corresponding to Colors :
+
+COLOR               INT VALUES
+-------------------------------
+BLACK                   0
+BLUE                    1
+GREEN                   2
+CYAN                    3
+RED                     4
+MAGENTA                 5
+BROWN                   6
+LIGHTGRAY               7
+DARKGRAY                8
+LIGHTBLUE               9
+LIGHTGREEN             10
+LIGHTCYAN              11
+LIGHTRED               12
+LIGHTMAGENTA           13
+YELLOW                 14
+WHITE                  15
+Below is the table showing INT VALUES corresponding to Patterns :
+
+PATTERN              INT VALUES
+-------------------------------
+EMPTY_FILL               0
+SOLID_FILL               1
+LINE_FILL                2
+LTSLASH_FILL             3
+SLASH_FILL               4
+BKSLASH_FILL             5
+LTBKSLASH_FILL           6
+HATCH_FILL               7
+XHATCH_FILL              8
+INTERLEAVE_FILL          9
+WIDE_DOT_FILL           10
+CLOSE_DOT_FILL          11
+USER_FILL               12

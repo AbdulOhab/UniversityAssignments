@@ -1,0 +1,58 @@
+//DHCP inter some switch
+command: show ip route
+Router>en
+Router#config t
+
+Router(config)#ip dhcp excluded-address 192.168.1.1 192.168.1.10
+
+
+########################################################################
+Router(config-if)#ip dhcp pool DHCP_Switch0
+Router(dhcp-config)#network 192.168.1.0 255.255.255.192
+Router(dhcp-config)#default-router 192.168.1.1
+Router(dhcp-config)#dns-server 192.168.1.62
+
+
+Router(dhcp-config)#int gig0/0
+Router(config-if)#ip address 192.168.1.1 255.255.255.192
+Router(config-if)#no shut
+
+########################################################################
+Router(config)#ip dhcp pool DHCP_Switch1
+Router(dhcp-config)#network 192.168.1.64 255.255.255.192
+Router(dhcp-config)#default-router 192.168.1.65
+Router(dhcp-config)#dns-server 192.168.1.125
+
+Router(dhcp-config)#int gig0/1
+Router(config-if)#ip address 192.168.1.65 255.255.255.192
+Router(config-if)#no shut
+
+########################################################################
+Router(config)#ip dhcp pool DHCP_Switch3
+Router(dhcp-config)#network 192.168.1.128 255.255.255.192
+Router(dhcp-config)#default-router 192.168.1.129
+Router(dhcp-config)#dns-server 192.168.1.189
+
+Router(dhcp-config)#int gig0/2
+Router(config-if)#ip address 192.168.1.129 255.255.255.192
+Router(config-if)#no shut
+
+====================================================================
+//Switch1
+//with DNS Server 
+config: 192.168.1.125
+ip_config static:
+
+IP Address: 192.168.1.125
+Subnet MaeskL: 255.255.255.0
+Default Geteway: 192.168.1.65
+DNS Server: 192.168.1.125
+
+service -> DNS ->  Address : 192.168.1.124
+service -> DNS ->  Name	   : http://www.ohab.com
+
+WEB Server:
+IP Address: 192.168.1.124
+Subnet MaeskL: 255.255.255.0
+Default Geteway: 192.168.1.65
+DNS Server: 192.168.1.125

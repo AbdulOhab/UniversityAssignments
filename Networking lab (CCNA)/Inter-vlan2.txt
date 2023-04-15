@@ -1,0 +1,217 @@
+Create 3 vlan in every switch:
+=========================================== Switch0 ===================================
+
+Switch>en
+Switch#config t
+Switch(config)#vlan 10
+Switch(config-vlan)#name IT
+
+Switch(config)#vlan 20
+Switch(config-vlan)#name ADMIN
+
+Switch(config)#vlan 30
+Switch(config-vlan)#name ACCOUNTS
+
+Switch(config)#do wr
+Building configuration...
+[OK]
+
+
+Switch#sh vlan brief 
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+10   IT                               active    
+20   ADMIN                            active    
+30   ACCOUNTS                         active    
+1002 fddi-default                     active    
+
+Switch(config)#int range fa0/1-10
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 10
+Switch(config-if-range)#no shut
+
+Switch(config)#int range fa0/11-15
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 20
+Switch(config-if-range)#no shut
+
+Switch(config-if-range)#int range fa0/16-20
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 30
+Switch(config-if-range)#no shut
+
+Switch#sh vlan brief
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/21, Fa0/22, Fa0/23, Fa0/24
+10   IT                               active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10
+20   ADMIN                            active    Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15
+30   ACCOUNTS                         active    Fa0/16, Fa0/17, Fa0/18, Fa0/19
+                                                Fa0/20
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+
+Switch(config)#do wr
+Building configuration...
+[OK]
+
+
+============================== Connect to another switch ==============================
+Switch#sh interfaces trunk 
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/24      **auto         n-802.1q       trunking      1
+
+Switch(config)#int fa 0/24
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#no shut
+Switch(config-if)#exit
+
+Switch#sh interfaces trunk 
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/24      **on           802.1q         trunking      1
+
+
+=========================================== Switch 2 ===================================
+Switch>en
+Switch#config t
+Switch(config)#vlan 10
+Switch(config-vlan)#name IT
+
+Switch(config)#vlan 20
+Switch(config-vlan)#name ADMIN
+
+Switch(config)#vlan 30
+Switch(config-vlan)#name ACCOUNTS
+
+Switch(config)#do wr
+Building configuration...
+[OK]
+
+Switch(config)#int range fa0/1-10
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 10
+Switch(config-if-range)#no shut
+Switch(config-if-range)#exit
+
+Switch(config)#int range fa0/11-15
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 20
+Switch(config-if-range)#no shut
+Switch(config-if-range)#exit
+
+Switch(config)#int range fa0/16-20
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 30
+Switch(config-if-range)#no shut
+Switch(config-if-range)#exit
+
+
+Switch#sh vlan brief
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/21, Fa0/22, Fa0/23, Fa0/24
+10   IT                               active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10
+20   ADMIN                            active    Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15
+30   ACCOUNTS                         active    Fa0/16, Fa0/17, Fa0/18, Fa0/19
+                                                Fa0/20
+ 
+
+Switch#sh interfaces trunk 
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/24      **auto         n-802.1q       trunking      1
+
+
+Switch(config)#int fa 0/24
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#no shut
+Switch(config-if)#exit
+Switch(config)#do wr
+Building configuration...
+[OK]
+
+Switch#sh interfaces trunk 
+Port        Mode         Encapsulation  Status        Native vlan
+Fa0/24      **on           802.1q         trunking      1
+
+
+=========================================== Switch 1 ===================================
+
+Switch(config)#vlan 10
+Switch(config-vlan)#name IT
+
+Switch(config)#vlan 20
+Switch(config-vlan)#name ADMIN
+
+Switch(config)#vlan 30
+Switch(config-vlan)#name ACCOUNTS
+
+Switch#sh vlan brief 
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12
+10   IT                               active    
+20   ADMIN                            active    
+30   ACCOUNTS                         active    
+
+
+Switch(config)#int fa 0/24
+Switch(config-if)#switchport mode trunk
+
+Switch(config)#int fa0/3
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#no shut
+Switch(config-if)#exit
+
+Switch(config)#int fa 0/23
+Switch(config-if)#switchport mode trunk
+
+
+=========================================== Router 0 ===================================
+Router>en
+Router#config t
+
+Router(config)#int fa 0/0
+Router(config-if)#no shut
+Router(config-if)#exit
+
+
+Router(config)#interface fa0/0.10
+Router(config-subif)#encapsulation dot1Q 10
+Router(config-subif)#ip add 192.168.10.1 255.255.255.0
+Router(config-subif)#exit
+
+Router(config)#interface fa0/0.20
+Router(config-subif)#encapsulation dot1Q 20
+Router(config-subif)#ip add 192.168.20.1 255.255.255.0
+Router(config-subif)#exit
+
+Router(config)#interface fa0/0.30
+Router(config-subif)#encapsulation dot1Q 30
+Router(config-subif)#ip add 192.168.30.1 255.255.255.0
+Router(config-subif)#no shut
+Router(config-subif)#exit
+
+Router#show running-config 
+
+interface FastEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.100.1 255.255.255.0
+!
+interface FastEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+!
+interface FastEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0

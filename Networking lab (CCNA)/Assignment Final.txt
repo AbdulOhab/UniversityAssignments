@@ -1,0 +1,205 @@
+1	
+DHCP IP:192.168.0.0/24
+R1:
+----------------------------------------- not working DHCP
+ip dhcp excluded-address 192.168.50.254 
+
+
+ip dhcp pool SEU_DHCP
+network 192.168.50.0 255.255.255.0
+default-router 192.168.50.1
+dns-server 192.168.50.254
+
+
+
+int gig0/0 
+ip add 192.168.50.1 255.255.255.0
+no shut
+
+----------------------------------------------------------------------------------
+
+sh running-config
+
+vlan:
+
+Switch 1 and Switch 2 in R1
+==========================
+
+
+vlan 2
+name STUDENT
+vlan 3
+name TEACHER
+
+int range fa0/1-9
+switchport access vlan 2
+switchport mode access
+
+int range fa0/10-20
+switchport access vlan 3
+switchport mode access
+
+
+
+*this stablish a Trunk ...
+
+int fa 0/24
+switchport mode trunk
+
+**only switch 2
+int gig 0/1
+switchport mode trunk 
+
+
+show vlan brief
+sh interfaces trunk 
+
+inter-vlan:
+==========
+**R1 Router for config
+
+
+interface gig0/0.2
+encapsulation dot1Q 2
+ip add 192.168.1.1 255.255.255.0
+  
+
+**Student
+ip dhcp pool Arif
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+exit
+
+
+interface gig0/0.3
+encapsulation dot1Q 3
+ip add 192.168.2.1 255.255.255.0
+
+
+**teacher
+ip dhcp pool Mesba
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+dns-server 8.8.8.8
+exit
+
+ospf
+-------------------------------------------------------
+
+**do sh ip protocols
+
+R0 - area 0
+
+router ospf 10
+network 192.168.1.0 0.0.0.255 area 0
+network 192.168.2.0 0.0.0.255 area 0
+network 10.10.0.0 0.0.0.15 area 0
+
+
+network 50.50.1.0 0.0.0.255 area 0
+
+
+
+
+R1 - area 1
+
+network 10.10.0.0 0.0.0.15 area 0
+network 192.168.5.0 0.0.0.255 area 1
+network 60.60.1.0 0.0.0.255 area 2
+
+
+Nat - area 2
+
+network 192.168.10.0 0.0.0.255 area 2
+network 50.50.1.0 0.0.0.255 area 0
+network 60.60.1.0 0.0.0.255 area 2
+
+
+
+
+ping:
+tracert 192.168.5.2
+
+------------------------------------------------
+NAT/PAT
+ip route 0.0.0.0 0.0.0.0 1.1.1.2
+
+access-list 1 permit 50.50.0.0 0.0.0.255
+access-list 1 permit 192.168.10.0 0.0.0.255
+access-list 1 permit 60.60.1.0 0.0.0.255
+
+ip nat pool NAT-POOL 2.2.2.1 2.2.2.5 netmask 255.255.255.0
+ip nat inside source list 1 pool NAT-POOL ? // this is pat
+  overload  Overload an address translation
+
+ip nat inside source list 1 pool NAT-POOL overload
+
+
+
+int se0/2/0
+ip nat outside
+
+int se0/3/1
+ip nat inside 
+
+ip route 192.168.20.0 255.255.255.0 1.1.1.2
+
+
+router 1 which connect server:
+
+ip route 50.50.1.0 255.255.255.0 1.1.1.1
+
+ip route 192.168.10.0 255.255.255.0 1.1.1.1
+
+ip route 60.60.1.0 255.255.255.0 1.1.1.1
+
+
+============================================================
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My</title>
+</head>
+
+<body>
+
+  <h2>Md Abdul Wahab Sarker</h2>
+  <p>BSc in CSE</p>
+  <p>Souteast University</p>
+
+</body>
+</html> 
+================================= R2
+
+interface GigabitEthernet0/0
+ip address 192.168.10.1 255.255.255.0
+no shutdown
+
+interface Serial0/3/0
+ip address 50.50.1.2 255.255.255.0
+no shutdown
+
+interface Serial0/3/1
+ip address 60.60.1.1 255.255.255.0
+no shutdown
+
+
+
+router ospf 10
+network 192.168.10.0 0.0.0.255 area 2
+network 50.50.1.0 0.0.0.255 area 0
+network 60.60.1.0 0.0.0.255 area 2
+ex
+
+
+interface Serial0/2/0
+ip address 1.1.1.1 255.255.255.0
+no shutdown
+
+================================= R3
+
+interface Serial0/3/0
+ip address 1.1.1.2 255.255.255.0
+no shutdown
