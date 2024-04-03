@@ -1,2 +1,2 @@
 # UniversityAssignments
-University assignments are academic tasks assigned to students enrolled in university courses.The purpose of these assignments is to assess a student's understanding and mastery of the course material, as well as to encourage critical thinking, analysis, and research skills.
+This repository is a compilation of university assignments that I have completed throughout That time. Course-specific assignments are arranged in a variety of academic areas. The purpose of this collection is to offer a  overview of my academic progression, highlighting my proficiency and expertise in various fields of study.
