@@ -1,0 +1,134 @@
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css");
+
+/* body {
+  display: flex;
+  justify-content: center;
+  font-family: "lato", sans-serif;
+  color: #ffff;
+  background: #00573f;
+} */
+
+.container-log {
+  background: #00573f;
+  border-radius: 5px;
+  min-height: 100vh;
+  justify-content: normal;
+}
+
+.container-log .login {
+  min-width: 550px;
+  background: white;
+  border-radius: 5px;
+  margin-top: 20%;
+}
+
+.logo-log {
+  background: #00573f;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #ffff;
+  border: 1px solid #ffff;
+}
+
+.logo p {
+  font-size: 20px;
+  text-align: center;
+  margin: 5px;
+  color: #ffff;
+  margin-bottom: 5px;
+}
+
+.login-item {
+  padding: 20px;
+}
+
+.user:before {
+  content: "\f007";
+  font: 14px fontawesome;
+  color: #ffff;
+}
+
+.lock:before {
+  content: "\f023";
+  font: 14px fontawesome;
+  color: #ffff;
+}
+
+.form-login label,
+.form-login input[type="text"],
+.form-login input[type="password"],
+.form-login input[type="submit"] {
+  border-radius: 0.25rem;
+  padding: 1rem;
+  color: #00573f;
+}
+.form-login label {
+  background-color: #00573f;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.form input[type="password"],
+.form input[type="text"],
+.form input[type="submit"] {
+  width: 100%;
+  border: 0;
+}
+
+.form-login input[type="text"],
+.form-login input[type="password"] {
+  background-color: #ffff;
+  color: #00573f;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-top: 1px solid #00573f;
+  border-bottom: 1px solid #00573f;
+  border-right: 1px solid #00573f;
+}
+
+.form-login input[type="text"]:focus,
+.form-login input[type="text"]:hover,
+.form-login input[type="password"]:focus,
+.form-login input[type="password"]:hover {
+  outline: 0;
+  background-color: #eeeeee;
+}
+
+.form-login input[type="submit"] {
+  background-color: #00573f;
+  color: #ffff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.form-login input[type="submit"]:focus,
+.form-login input[type="submit"]:hover {
+  background-color: #8a1538;
+  color: #eeeeee;
+  cursor: pointer;
+}
+
+.form-field {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.sign-up {
+  text-align: center;
+  padding: 20px 0 0;
+}
+.one-line {
+  display: flex;
+}
+.forgot {
+  margin-left: auto;
+}
+/* label {
+  margin-bottom: 0px;
+  cursor: pointer;
+} */

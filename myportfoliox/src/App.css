@@ -1,0 +1,154 @@
+:root {
+  --primary-app-color: #02203c;
+  --scondery-app-color: #001528;
+  --standout-color: rgb(231, 231, 0);
+}
+* {
+  padding: 0px;
+  margin: 0px;
+}
+a {
+  text-decoration: none;
+}
+.herosection {
+  background: linear-gradient(
+    -90deg,
+    var(--primary-app-color),
+    var(--scondery-app-color)
+  );
+  clip-path: polygon(80% 0%, 100% 0%, 100% 90%, 51% 100%, 0% 90%, 0 0);
+  /* clip-path: polygon(80% 0%, 100% 0%, 100% 75%, 51% 100%, 0% 75%, 0 0); */
+}
+
+.nav-items {
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.3rem;
+  font-family: "Times New Roman", Times, serif;
+}
+.nav-items:hover {
+  color: #29207a;
+}
+
+.brand-name {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  font-size: 2rem;
+}
+
+/* this just padding in this two side */
+.px-10 {
+  padding-inline: 90px;
+}
+
+.herosection-2 {
+  padding-top: 60px;
+}
+.Im-text-section {
+  padding-top: 52px;
+  text-align: center;
+}
+.Im-text {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.name-Im-text {
+  color: var(--standout-color);
+  font-size: 28px;
+}
+.Im-text-enthusiastic {
+  font-family: "Arial";
+  color: #fff;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+.Im-text-subheading {
+  font-family: "open sans-serif";
+  color: #fff;
+  font-size: 1.4rem;
+}
+.In-btn {
+  padding: 14px;
+}
+.btn-hire-me {
+  font-size: 1.3rem;
+  font-family: "Lucida Sans Unicode";
+  color: #fff;
+  background: transparent;
+  border-radius: 25px;
+  margin-inline: 12px;
+  padding: 5px 40px;
+  border: 2px solid white;
+  transition: all 0.3s ease-in-out;
+  /* animation: anima 1s ease-in-out infinite alternate; */
+}
+.btn-hire-me:hover {
+  transform: translateX(-5px);
+  background-color: #26b813;
+  color: #1c1c1c;
+}
+
+.btn-resume-me {
+  font-size: 1.3rem;
+  font-family: "Lucida Sans Unicode";
+  color: #fff;
+  background: #6bace9;
+  border-radius: 25px;
+  margin-inline: 12px;
+  padding: 5px 40px;
+  border: 2px solid white;
+  transition: all 0.3s ease-in-out;
+}
+.btn-resume-me:hover {
+  transform: translateX(-5px);
+  background-color: transparent;
+  color: #fff;
+}
+
+@keyframes anima {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.custom-img {
+  width: 400px;
+  border-radius: 60%;
+  object-fit: scale-down;
+  display: flex;
+  justify-content: center;
+  padding: 35px 0px 77px 0px;
+}
+/* about me section */
+.about-me-text {
+  font-family: "ubuntu";
+  font-weight: 800;
+  font-size: 3.5rem;
+  text-decoration: underline;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.why-text-sub {
+  font-family: "ubuntu";
+  font-weight: 700;
+  font-size: 2.3rem;
+  opacity: 0.8;
+  text-transform: capitalize;
+  text-align: center;
+}
+.about-inside {
+  width: 70%;
+  margin-inline: auto;
+}
+.purple {
+  color: #9d28e0 !important;
+}
