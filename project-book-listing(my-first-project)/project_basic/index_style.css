@@ -1,0 +1,73 @@
+body {
+    background-color: #FAF1F7;
+    font-size: 11pt;
+    font-family: tahoma;
+}
+
+
+.titles{
+	width: 100%;
+	background-color: #f5fff5;
+    border: 1px solid #b0b0b0;
+	text-align: center;
+	margin: 2px;
+	padding: 2px;
+	line-height: 140%;
+    color:#369136;
+}
+
+h3{
+    color:#000000
+}
+
+table {
+    font-size: 12pt;
+    font-family: tahoma;
+    color: #000000;
+    cursor: default;
+    margin-top: 0px;
+    border-color: #000000;
+}
+
+a:visited {
+    color: #558855
+}
+
+form{
+	padding: 10px;
+	font-size: 18px;
+}
+
+input, textarea, select{
+	background-color: rgba(138, 230, 81, 0.7);
+	border-radius: 10px;
+}
+
+textarea{
+	width: 250px;
+}
+
+button{
+	width: 100%;
+}
+
+.footer{
+	color: rgb(15, 12, 12);
+	font-size:12px;
+	border-right: 5px solid rgb(15, 146, 102);
+	text-align: right;
+}
+
+.container{
+	display: flex;
+    gap: 70px;
+
+}
+
+.container .child1{
+	background-color: #FAF1F7;	
+}
+.container .child3{
+	background-color: #FAF1F7;
+
+}

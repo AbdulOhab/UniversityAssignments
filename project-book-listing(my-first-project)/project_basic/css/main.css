@@ -1,0 +1,119 @@
+@import url(reset.css); 
+@import url(colour-azure.css);
+
+body {
+    background-color: #FAF1F7;
+    font-size: 11pt;
+    font-family: tahoma;
+}
+
+.container{
+	width: 100%;
+	background-color: #f5fff5;
+	border: 1px solid #b0b0b0;
+	text-align: center;
+	margin: 2px;
+	padding: 2px;
+	line-height: 140%;
+}
+h1,h3{
+	color: #8be551;
+}
+table {
+    font-size: 11pt;
+    font-family: tahoma;
+    color: #000000;
+    cursor: default;
+    margin-top: 0px;
+    border-color: #000000;
+}
+
+a:visited {
+    color: #558855
+}
+
+form{
+	padding: 10px;
+	font-size: 18px;
+}
+input, textarea, select{
+	background-color: rgba(138, 230, 81, 0.7);
+	border-radius: 10px;
+}
+textarea{
+	width: 250px;
+}
+button{
+	width: 100%;
+}
+
+.footer{
+	color: rgb(15, 12, 12);
+	font-size:12px;
+	border-right: 5px solid rgb(15, 146, 102);
+	text-align: right;
+}
+.container1{
+	display: flex;
+}
+
+.container1 .child1{
+	background-color: rgb(15, 146, 102);
+
+}
+.container1 .child2{
+	background-color: rgb(87, 150, 129);
+
+}
+
+
+
+
+/*******************************************************************************************************************
+this code is only for Responsive design                                                                                                    
+*******************************************************************************************************************/
+/* h1, h2, h3, h4{line-height:1.2em; margin-bottom:15px; font-weight:bold;}
+.wrap{margin:0 auto; position:relative; max-width:940px; padding:0 20px;}
+.col{width:48%; position:relative; margin-bottom:20px;}
+
+@media (max-width: 975px) {
+	.wrap{max-width:auto; margin:0;}
+	.cols li{max-width:30%;}
+	.cols li.middle{margin:0 5%;}
+	form fieldset{padding:15px;}
+	form label{display:block; margin-bottom:10px;}
+	form .text{margin:0; width:100%; padding-left:0; padding-right:0; text-indent:8px;}
+	form .button{float:right;}
+}
+
+@media (max-width: 750px) { 
+	header nav li a{font-size:11px; padding:0 10px;}
+	.col, .cols li{width:100%; max-width:100%; float:none; margin:0 0 30px !important;}
+	.cols li{max-width:100%;}
+	.cols li.middle{margin:0;}
+}
+
+@media (max-width: 580px) { 
+	header{height:50px; line-height:50px;}
+	#intro .inner{padding:30px 0;}
+	#intro p{padding-right:0 !important;}
+	h1{font-size:2.6em;}
+	header a#logo{left:20px;}
+	header #nav{right:20px;}
+	header #nav > strong{display:block; float:right; cursor:pointer;}
+	header #nav > strong:hover{color:#fff;}
+	header #nav > ul{display:none; position:absolute; left:auto; right:0; top:80%; line-height:normal; white-space:nowrap;}
+	header #nav > ul > li, header #nav > ul > li > ul > li{float:none; margin-bottom:1px; position:relative; background:none !important;}
+	header #nav > ul > li > ul{margin-top:1px; position:relative !important; display:block !important; top:0 !important; width:100% !important;}
+	header #nav > ul > li > a, header #nav > ul > li.parent > a{color:#c3c3c3; text-decoration:none; padding:10px 20px !important; height:auto; float:none !important; width:100%; display:block; background:url("img/subnav-bg.png"); -webkit-transition:all 0s ease-in-out; -moz-transition:all 0s ease-in-out; -o-transition:all 0s ease-in-out; -ms-transition:all 0s ease-in-out; transition:all 0s ease-in-out;}
+	header #nav > ul > li > a:hover{background:#000; color:#fff; text-decoration:none;}
+	header #nav > ul > li > ul > li > a{background:url("img/subnav-bg.png");}
+	footer p.floatLeft, footer p.floatRight{display:block; width:100%; float:none; margin-bottom:20px;}
+	footer p:last-child{margin-bottom:0;}
+	.buttonCentered{position:relative; top:-15px;}
+} */
+
+/* iPhone4 */
+/* @media only screen and (-webkit-min-device-pixel-ratio: 2) { 
+	html{width:100%;}
+} */
