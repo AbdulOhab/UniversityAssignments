@@ -1,0 +1,312 @@
+:root {
+  --primary-app-color: #02203c;
+  --scondery-app-color: #001528;
+  --standout-color: rgb(231, 231, 0);
+}
+
+/* resume css */
+.resume-options-items {
+  width: 1%;
+  transition: all 0.3s ease-in-out;
+  padding-block: 24px;
+  padding-inline: 24px;
+  color: #000;
+  cursor: pointer;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 24px;
+}
+.resume-options-items:hover {
+  width: 100%;
+  background: linear-gradient(
+    -90deg,
+    var(--primary-app-color),
+    var(--scondery-app-color)
+  );
+  color: #fff;
+}
+.icons-span {
+  margin-block: 24px;
+  margin-inline: 24px;
+}
+.selected {
+  background: linear-gradient(
+    -45deg,
+    var(--primary-app-color),
+    var(--scondery-app-color)
+  );
+  width: 100%;
+  color: #fff;
+}
+
+.bg-new {
+  background: linear-gradient(
+    -45deg,
+    var(--primary-app-color),
+    var(--scondery-app-color)
+  );
+  color: #fff;
+}
+.bg-add {
+  width: 100%;
+}
+
+.resume-outer-section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: var(--primary-app-color);
+  color: #fff;
+  /* clip-path: polygon(0 11%, 100% 0, 100% 100%, 0 100%); */
+  clip-path: polygon(0 17%, 100% 0, 100% 100%, 0 100%);
+}
+.resume-new-section {
+  margin-top: 42px;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 10px 10px 31px 2px #1c1c1c;
+}
+
+/* testimonials */
+.testimonial-card {
+  border-radius: 50px 20px 50px 0px;
+  padding: 24px;
+  width: 98%;
+}
+.descriptiom {
+  color: #000;
+  font-family: "Ubuntu";
+  font-weight: 700;
+}
+.name {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+/* Contect ME */
+.relative-bg {
+  clip-path: polygon(0 10%, 100% 11%, 100% 75%, 0 96%);
+  background: linear-gradient(
+    -90deg,
+    var(--primary-app-color),
+    var(--scondery-app-color)
+  );
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -4;
+}
+
+.Contect-me-card {
+  background: #1c1c1c;
+  width: 76%;
+  box-shadow: 10px 10px 63px 4px rgb(243 240 240);
+  height: 500px;
+  margin-inline: auto;
+}
+.get-in-touch {
+  color: #fff;
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 2rem;
+}
+.lebs {
+  color: #fff;
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-size: 1rem;
+}
+.input-group {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 10px;
+}
+.card-contect-right {
+  background: rgb(0, 7, 61);
+  /* box-shadow: 10px 3px 33px 4px rgb(47, 52, 97); */
+  border-radius: 20px;
+}
+
+.contect-inner-part {
+  padding-block: 118px;
+  color: #fff;
+}
+
+.px-9 {
+  padding-inline: 80px;
+}
+.flex-rows {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.navbar-option-mobile {
+  display: none;
+}
+/* footer */
+.relative-footer {
+  background: linear-gradient(
+    -90deg,
+    var(--primary-app-color),
+    var(--scondery-app-color)
+  );
+  height: 17%;
+  width: 100%;
+  position: absolute;
+  z-index: -4;
+}
+/* the mobile view style  */
+@media all and (max-width: 745px) {
+  /* navigation bar */
+  .navbar-option-mobile {
+    display: block;
+    width: 100vw;
+    height: 50px;
+    position: fixed;
+    z-index: 44;
+  }
+  .flex-rows {
+    flex-direction: column;
+  }
+  .navbar-new {
+    position: fixed;
+    height: 100vh;
+    width: 60vw;
+    z-index: 33;
+    transform: translateX(-700px);
+  }
+  .transition-all {
+    transition: all 0.03s ease-in-out;
+  }
+  .navbar-fixed-new {
+    position: fixed;
+    height: 100vh;
+    width: 60vw;
+    z-index: 33;
+    /* transform: translateX(-700px); */
+  }
+
+  .px-9 {
+    padding-inline: 0px;
+  }
+  .px-10 {
+    padding-inline: 10px;
+  }
+  .nav-items {
+    padding-block: 20px;
+  }
+  .brand-name {
+    font-size: 1.4rem;
+    padding-inline: 22px;
+  }
+  .bars {
+    height: 4px;
+    width: 40px;
+    background: #fff;
+    float: right;
+    z-index: 33;
+    transform: translateY(25px);
+  }
+  .bars::before {
+    display: block;
+    position: relative;
+    top: 12px;
+    content: "";
+    color: #fff;
+    width: 40px;
+    height: 4px;
+    background: #fff;
+  }
+  .bars::after {
+    display: block;
+    position: relative;
+    bottom: 15px;
+    content: "";
+    color: #fff;
+    height: 4px;
+    width: 40px;
+    background: #fff;
+  }
+  .brand-name {
+    margin-top: 12px;
+  }
+  .display-mobile {
+    display: none;
+  }
+  /* HeroSectin */
+  .Im-text {
+    font-size: 1.3rem;
+  }
+  .Im-text-enthusiastic {
+    font-size: 2rem;
+  }
+  .Im-text-subheading {
+    font-size: 1rem;
+  }
+  /* button */
+  .btn-hire-me {
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+  .btn-resume-me {
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+  /* About Me Section */
+  .about-me-text {
+    font-size: 2.7rem;
+  }
+  .why-text-sub {
+    font-size: 1.5rem;
+  }
+  .about-inside {
+    width: 85%;
+  }
+
+  /* Resume part */
+  .resume-outer-section {
+    padding-top: 123px;
+  }
+  /* .resume-right-section {
+    display: flex;
+    flex-direction: column;
+    margin-block: 24px;
+    margin-inline: 24px;
+  } */
+  .resume-new-section {
+    width: 100% !important;
+  }
+  .university-Name {
+    font-size: 1.3rem;
+  }
+  .university-degree {
+    font-size: 0.7rem;
+  }
+  .year-passedout {
+    font-size: 0.7rem;
+  }
+  .scrollable-div {
+    width: 104%;
+    height: 88%;
+    padding: 8px;
+    margin: 3px 0px 1px -8px;
+  }
+  .mobile-scroll {
+    width: 104%;
+    height: 50%;
+    padding: 0px;
+    margin: 3px 0px 1px -8px;
+  }
+  .git-link {
+    font-size: 0.5rem;
+  }
+  .mobile-border {
+    margin: 3%;
+    margin-left: 2%;
+  }
+
+  .Contect-me-card {
+    width: 93%;
+    height: 860px;
+  }
+  .relative-footer {
+    height: 20%;
+  }
+}
